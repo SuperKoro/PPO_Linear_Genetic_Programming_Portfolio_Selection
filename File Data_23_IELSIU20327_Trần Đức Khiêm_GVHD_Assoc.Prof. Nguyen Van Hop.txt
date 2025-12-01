@@ -1,0 +1,208 @@
+import numpy as np
+import random
+import copy
+import math
+
+jobs_initial = {
+    1: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12}
+    ],
+    2: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12}
+    ],
+    3: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [6], 'processing_time': 8},
+        {'op_id': 3, 'candidate_machines': [6], 'processing_time': 8}
+    ],
+    4: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 7}
+    ],
+    5: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1}
+    ],
+    6: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [6], 'processing_time': 8},
+        {'op_id': 3, 'candidate_machines': [6], 'processing_time': 8}
+    ],
+    7: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 7}
+    ],
+    8: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [6], 'processing_time': 8},
+        {'op_id': 3, 'candidate_machines': [6], 'processing_time': 8}
+    ],
+    9: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 7}
+    ],
+    10: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 7}
+    ],
+    11: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 7}
+    ],
+    12: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12}
+    ],
+    13: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12}
+    ],
+    14: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [6], 'processing_time': 8},
+        {'op_id': 3, 'candidate_machines': [6], 'processing_time': 8}
+    ],
+    15: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [7], 'processing_time': 43},
+        {'op_id': 3, 'candidate_machines': [5], 'processing_time': 43}
+    ],
+    16: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 8}
+    ],
+    17: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 12}
+    ],
+    18: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 4}
+    ],
+    19: [
+        {'op_id': 1, 'candidate_machines': [8], 'processing_time': 3}
+    ],
+    20: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 25}
+    ],
+    21: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1}
+    ],
+    22: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 25}
+    ],
+    23: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 25}
+    ],
+    24: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 8}
+    ],
+    25: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 8},
+        {'op_id': 3, 'candidate_machines': [8], 'processing_time': 7}
+    ],
+    26: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 25}
+    ],
+    27: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 25}
+    ],
+    28: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1}
+    ],
+    29: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 12},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 25}
+    ],
+    30: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 8}
+    ],
+    31: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 8},
+        {'op_id': 3, 'candidate_machines': [8], 'processing_time': 8}
+    ],
+    32: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 13},
+        {'op_id': 2, 'candidate_machines': [9, 10], 'processing_time': 23}
+    ],
+    33: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [15], 'processing_time': 12}
+    ],
+    34: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [15], 'processing_time': 12}
+    ],
+    35: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 15},
+        {'op_id': 2, 'candidate_machines': [9, 10], 'processing_time': 23}
+    ],
+    36: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 10},
+        {'op_id': 2, 'candidate_machines': [15], 'processing_time': 12}
+    ],
+    37: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 15},
+        {'op_id': 2, 'candidate_machines': [9, 10], 'processing_time': 23}
+    ],
+    38: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 15},
+        {'op_id': 2, 'candidate_machines': [9, 10], 'processing_time': 23},
+        {'op_id': 3, 'candidate_machines': [9, 10], 'processing_time': 23}
+    ],
+    39: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 7}
+    ],
+    40: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 10},
+        {'op_id': 2, 'candidate_machines': [9, 10], 'processing_time': 23},
+        {'op_id': 3, 'candidate_machines': [9, 10], 'processing_time': 23}
+    ],
+    41: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 9},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 13},
+        {'op_id': 3, 'candidate_machines': [12, 13], 'processing_time': 13}
+    ],
+    42: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 9},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 13},
+        {'op_id': 3, 'candidate_machines': [12, 13], 'processing_time': 13}
+    ],
+    43: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [15], 'processing_time': 15}
+    ],
+    44: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 13},
+        {'op_id': 2, 'candidate_machines': [15], 'processing_time': 7}
+    ],
+    45: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1}
+    ],
+    46: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 9}
+    ],
+    47: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 32},
+        {'op_id': 3, 'candidate_machines': [12, 13], 'processing_time': 32},
+        {'op_id': 4, 'candidate_machines': [12, 13], 'processing_time': 32}
+    ],
+    48: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [12, 13], 'processing_time': 32},
+        {'op_id': 3, 'candidate_machines': [12, 13], 'processing_time': 32},
+        {'op_id': 4, 'candidate_machines': [12, 13], 'processing_time': 32}
+    ],
+    49: [
+        {'op_id': 1, 'candidate_machines': [3, 4], 'processing_time': 1},
+        {'op_id': 2, 'candidate_machines': [8], 'processing_time': 15}
+    ],
+    50: [
+        {'op_id': 1, 'candidate_machines': [1, 2], 'processing_time': 7}
+    ]
+}
+
+# due_dates_initial: tất cả các job có due_date = 1200
+due_dates_initial = {i: 1200 for i in range(1, 51)}
