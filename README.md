@@ -224,37 +224,4 @@ When a portfolio is executed:
 
 **Action Space**: Discrete(64) - choose one of 64 portfolios
 
-**Reward**: `-makespan` (negative total completion time)
-
-### Coevolution Process
-
-Each generation:
-1. Run 100 episodes → collect fitness for each portfolio
-2. Update PPO policy using collected experience
-3. **Elite Selection**: Keep top 16 portfolios
-4. **Replacement**: Replace 4 worst portfolios
-5. **Crossover**: Combine two elite parents
-6. **Mutation**: Random changes to DR/MH or weights
-
-## 📋 Dispatching Rules
-
-| Rule | Strategy |
-|------|----------|
-| **EDD** | Earliest Due Date - prioritize jobs with earliest deadlines |
-| **SPT** | Shortest Processing Time - prioritize shortest jobs |
-| **CR** | Critical Ratio - prioritize by (due_date - now) / remaining_time |
-| **FCFS** | First Come First Served - process in arrival order |
-
-## 🧬 Metaheuristics
-
-| Method | Approach |
-|--------|----------|
-| **SA** | Simulated Annealing - accepts worse solutions with decreasing probability |
-| **GA** | Genetic Algorithm - evolves population through selection, crossover, mutation |
-| **PSO** | Particle Swarm Optimization - particles move toward best solutions |
-
-
-
-## 📄 License
-
 This project is licensed under the MIT License - see the LICENSE file for details.

@@ -256,6 +256,167 @@ def reschedule_unfinished_jobs_edd(unfinished_jobs, current_time, finished_event
             machine_ready[best_machine] = best_finish
     return new_events
 
+def reschedule_unfinished_jobs_spt(unfinished_jobs, current_time, finished_events, machine_pool):
+    """
+    Shortest Processing Time (SPT): Ưu tiên jobs có tổng processing time ngắn nhất.
+    """
+    sorted_jobs = sorted(
+        unfinished_jobs.items(),
+        key=lambda x: sum(op['processing_time'] for op in x[1]['operations'])
+    )
+    new_events = []
+    machine_ready = {m: current_time for m in machine_pool}
+    for job, info in sorted_jobs:
+        job_ready = info['job_ready']
+        for op in sorted(info['operations'], key=lambda op: op['op_index']):
+            pt = op['processing_time']
+            best_start = float('inf')
+            best_finish = float('inf')
+            best_machine = None
+            for m in op['candidate_machines']:
+                st = max(job_ready, machine_ready.get(m, current_time))
+                ft = st + pt
+                if ft < best_finish:
+                    best_finish = ft
+                    best_start = st
+                    best_machine = m
+            event = {
+                'job': job,
+                'op_index': op['op_index'],
+                'start': best_start,
+                'finish': best_finish,
+                'machine': best_machine,
+                'op_id': op['op_id'],
+                'candidate_machines': op['candidate_machines']
+            }
+            new_events.append(event)
+            job_ready = best_finish
+            machine_ready[best_machine] = best_finish
+    return new_events
+
+def reschedule_unfinished_jobs_lpt(unfinished_jobs, current_time, finished_events, machine_pool):
+    """
+    Longest Processing Time (LPT): Ưu tiên jobs có tổng processing time dài nhất.
+    """
+    sorted_jobs = sorted(
+        unfinished_jobs.items(),
+        key=lambda x: sum(op['processing_time'] for op in x[1]['operations']),
+        reverse=True  # Descending order
+    )
+    new_events = []
+    machine_ready = {m: current_time for m in machine_pool}
+    for job, info in sorted_jobs:
+        job_ready = info['job_ready']
+        for op in sorted(info['operations'], key=lambda op: op['op_index']):
+            pt = op['processing_time']
+            best_start = float('inf')
+            best_finish = float('inf')
+            best_machine = None
+            for m in op['candidate_machines']:
+                st = max(job_ready, machine_ready.get(m, current_time))
+                ft = st + pt
+                if ft < best_finish:
+                    best_finish = ft
+                    best_start = st
+                    best_machine = m
+            event = {
+                'job': job,
+                'op_index': op['op_index'],
+                'start': best_start,
+                'finish': best_finish,
+                'machine': best_machine,
+                'op_id': op['op_id'],
+                'candidate_machines': op['candidate_machines']
+            }
+            new_events.append(event)
+            job_ready = best_finish
+            machine_ready[best_machine] = best_finish
+    return new_events
+
+def reschedule_unfinished_jobs_fcfs(unfinished_jobs, current_time, finished_events, machine_pool):
+    """
+    First Come First Served (FCFS/FIFO): Ưu tiên jobs theo thứ tự job_ready time.
+    """
+    sorted_jobs = sorted(
+        unfinished_jobs.items(),
+        key=lambda x: x[1]['job_ready']
+    )
+    new_events = []
+    machine_ready = {m: current_time for m in machine_pool}
+    for job, info in sorted_jobs:
+        job_ready = info['job_ready']
+        for op in sorted(info['operations'], key=lambda op: op['op_index']):
+            pt = op['processing_time']
+            best_start = float('inf')
+            best_finish = float('inf')
+            best_machine = None
+            for m in op['candidate_machines']:
+                st = max(job_ready, machine_ready.get(m, current_time))
+                ft = st + pt
+                if ft < best_finish:
+                    best_finish = ft
+                    best_start = st
+                    best_machine = m
+            event = {
+                'job': job,
+                'op_index': op['op_index'],
+                'start': best_start,
+                'finish': best_finish,
+                'machine': best_machine,
+                'op_id': op['op_id'],
+                'candidate_machines': op['candidate_machines']
+            }
+            new_events.append(event)
+            job_ready = best_finish
+            machine_ready[best_machine] = best_finish
+    return new_events
+
+def reschedule_unfinished_jobs_cr(unfinished_jobs, current_time, finished_events, machine_pool):
+    """
+    Critical Ratio (CR): Ưu tiên jobs theo tỷ lệ (due_date - current_time) / remaining_processing_time.
+    Tỷ lệ nhỏ = critical hơn = ưu tiên cao hơn.
+    """
+    def calculate_cr(info):
+        remaining_pt = sum(op['processing_time'] for op in info['operations'])
+        slack = info['due_date'] - current_time
+        if remaining_pt <= 0:
+            return float('inf')  # No work left, lowest priority
+        return slack / remaining_pt
+    
+    sorted_jobs = sorted(
+        unfinished_jobs.items(),
+        key=lambda x: calculate_cr(x[1])
+    )
+    new_events = []
+    machine_ready = {m: current_time for m in machine_pool}
+    for job, info in sorted_jobs:
+        job_ready = info['job_ready']
+        for op in sorted(info['operations'], key=lambda op: op['op_index']):
+            pt = op['processing_time']
+            best_start = float('inf')
+            best_finish = float('inf')
+            best_machine = None
+            for m in op['candidate_machines']:
+                st = max(job_ready, machine_ready.get(m, current_time))
+                ft = st + pt
+                if ft < best_finish:
+                    best_finish = ft
+                    best_start = st
+                    best_machine = m
+            event = {
+                'job': job,
+                'op_index': op['op_index'],
+                'start': best_start,
+                'finish': best_finish,
+                'machine': best_machine,
+                'op_id': op['op_id'],
+                'candidate_machines': op['candidate_machines']
+            }
+            new_events.append(event)
+            job_ready = best_finish
+            machine_ready[best_machine] = best_finish
+    return new_events
+
 def reschedule_unfinished_jobs_sa(unfinished_jobs, current_time, finished_events, machine_pool, iterations=50):
     # Sử dụng SA với cooling schedule động và số iterations cao hơn.
     current_solution = reschedule_unfinished_jobs_edd(unfinished_jobs, current_time, finished_events, machine_pool)
@@ -268,7 +429,7 @@ def reschedule_unfinished_jobs_sa(unfinished_jobs, current_time, finished_events
         # Tạo neighbor bằng cách thay đổi ngẫu nhiên một vài event trong current_solution
         neighbor = copy.deepcopy(current_solution)
         # Ví dụ: thay đổi finish của một event
-        if neighbor:
+        if neighbor and len(neighbor) > 0:  # ← Added len check
             idx = random.randint(0, len(neighbor)-1)
             neighbor[idx]['finish'] *= random.uniform(1.0, 1.05)
         merged = finished_events + neighbor
@@ -302,7 +463,7 @@ def reschedule_unfinished_jobs_ga(unfinished_jobs, current_time, finished_events
             new_population.append(child)
         # Mutation: thay đổi ngẫu nhiên một vài event trong mỗi cá thể
         for solution in new_population:
-            if random.random() < 0.3:
+            if random.random() < 0.3 and len(solution) > 0:  # ← Added len(solution) > 0 check
                 idx = random.randint(0, len(solution)-1)
                 solution[idx]['finish'] *= random.uniform(0.95, 1.05)
         population = new_population
@@ -685,7 +846,11 @@ def plot_gantt(schedule_events):
     legend_elements = [Patch(facecolor=color, edgecolor='black', label=f"Job {job}") for job, color in sorted_jobs]
     ax.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1.02, 1), borderaxespad=0.)
     plt.tight_layout()
-    plt.show()
+    
+    # Save instead of show to avoid blocking
+    plt.savefig("results/final/gantt_chart.png", dpi=150, bbox_inches='tight')
+    plt.close()
+    print(f"  📊 Gantt chart saved to: results/final/gantt_chart.png")
 
 
 def initialize_lgp_action_library(pool_size=64,
@@ -696,7 +861,7 @@ def initialize_lgp_action_library(pool_size=64,
     Tạo pool_size ActionIndividual ngẫu nhiên dùng ActionLGP.
     """
     if dr_list is None:
-        dr_list = ["EDD"]
+        dr_list = ["EDD", "SPT", "LPT", "FCFS", "CR"]
     if mh_list is None:
         mh_list = ["SA", "GA", "PSO", "EDD"]
 
@@ -710,24 +875,40 @@ def initialize_lgp_action_library(pool_size=64,
 
 
 if __name__ == "__main__":
-    # Cấu hình PPO
-    lr = 3e-4
-    gamma = 0.9
-    ppo_epochs = 10
-    clip_epsilon = 0.25
-    entropy_coef = 0.01
+    # Import configuration
+    from config import (
+        PPOConfig, CoevolutionConfig, LGPConfig, EnvironmentConfig,
+        RANDOM_SEED, OUTPUT_DIR, MODEL_SAVE_PATH,
+        print_config_summary, Presets
+    )
+    
+    # Print configuration summary
+    print_config_summary()
+    
+    # Optional: Use a preset for quick testing
+    # Presets.quick_test()  # Uncomment for fast testing
+    # Presets.high_quality()  # Uncomment for better results
+    
+    # PPO hyperparameters from config
+    lr = PPOConfig.learning_rate
+    gamma = PPOConfig.gamma
+    ppo_epochs = PPOConfig.ppo_epochs
+    clip_epsilon = PPOConfig.clip_epsilon
+    entropy_coef = PPOConfig.entropy_coef
 
     # 1) Khởi tạo 64 action từ LGP
     action_library = initialize_lgp_action_library(
-        pool_size=64,
-        seed=42
+        pool_size=LGPConfig.pool_size,
+        dr_list=LGPConfig.available_dr,
+        mh_list=LGPConfig.available_mh,
+        seed=RANDOM_SEED
     )
 
     # 2) Tạo env (cho 1 dataset hiện tại)
     env = DynamicSchedulingEnv(
-        lambda_tardiness=1.0,
+        lambda_tardiness=EnvironmentConfig.lambda_tardiness,
         action_library=action_library,
-        action_budget_s=1.0
+        action_budget_s=LGPConfig.action_budget_s
     )
     obs_dim = env.observation_space.shape[0]
     act_dim = env.action_space.n
@@ -736,24 +917,27 @@ if __name__ == "__main__":
     model = PPOActorCritic(obs_dim, act_dim)
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
-    # 4) Cấu hình coevolution
-    cfg = CoevolutionConfig(
-        num_generations=10,          # G
-        episodes_per_gen=100,         # E
-        max_steps_per_episode=200,
+    # 4) Cấu hình coevolution from config
+    from coevolution_trainer import CoevolutionConfig as CoevoCfg
+    cfg = CoevoCfg(
+        num_generations=CoevolutionConfig.num_generations,
+        episodes_per_gen=CoevolutionConfig.episodes_per_gen,
+        max_steps_per_episode=CoevolutionConfig.max_steps_per_episode,
         gamma=gamma,
         ppo_epochs=ppo_epochs,
         clip_epsilon=clip_epsilon,
         entropy_coef=entropy_coef,
-        elite_size=16,
-        n_replace=4,
-        warmup_episodes=2
+        elite_size=CoevolutionConfig.elite_size,
+        n_replace=CoevolutionConfig.n_replace,
+        warmup_episodes=CoevolutionConfig.warmup_episodes,
+        mutation_sigma=CoevolutionConfig.mutation_sigma,
+        dr_mutation_prob=CoevolutionConfig.dr_mutation_prob,
+        mh_name_mutation_prob=CoevolutionConfig.mh_name_mutation_prob
     )
 
     # 5) Train với coevolution (PPO + LGP)
     import os
-    output_dir = "results"  # Changed from "results/portfolios"
-    os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
     
     train_with_coevolution(
         env=env,
@@ -763,14 +947,15 @@ if __name__ == "__main__":
         select_action_fn=select_action,
         compute_returns_fn=compute_returns,
         cfg=cfg,
-        output_dir=output_dir
+        output_dir=OUTPUT_DIR
     )
 
     # 6) Lưu model sau khi train
-    torch.save(model.state_dict(), "trained_policy_coevolution.pth")
-    print("\n=== Training Complete ===")
-    print("Model saved to: trained_policy_coevolution.pth")
-    print(f"Results saved to: {output_dir}/")
+    torch.save(model.state_dict(), MODEL_SAVE_PATH)
+    print(f"\n=== Training Complete ===")
+    print(f"Model saved to: {MODEL_SAVE_PATH}")
+    print(f"Results saved to: {OUTPUT_DIR}/")
+
 
 
 
