@@ -11,7 +11,7 @@ Read comments carefully before modifying.
 # ============================================================================
 
 # Random seed for reproducibility
-RANDOM_SEED = 42
+RANDOM_SEED = 777
 
 # Output directory for results
 OUTPUT_DIR = "results"
@@ -65,7 +65,7 @@ class CoevolutionConfig:
     
     # Episodes per generation (Safe to modify)
     # More episodes = better fitness estimate but slower
-    episodes_per_gen = 200
+    episodes_per_gen = 500
     
     # Maximum steps per episode (⚠️ CAREFUL)
     # Too low: episodes end prematurely
@@ -129,6 +129,12 @@ class LGPConfig:
     # Too high: slow training
     # Recommended: 0.5 - 3.0 seconds
     action_budget_s = 3.0
+    
+    # LGP evolution parameters
+    num_registers = 20
+    min_program_length = 8
+    max_program_length = 30
+    mutation_rate = 0.5  # Increased from 0.3 for better exploration
 
 
 # ============================================================================

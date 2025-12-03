@@ -3,157 +3,53 @@
   "elite_portfolios": [
     {
       "dr": {
-        "name": "EDD",
-        "weight": 1.0
-      },
-      "mh_genes": [
-        {
-          "name": "GA",
-          "weight_raw": 1.3131,
-          "weight_norm": 0.6165
-        },
-        {
-          "name": "EDD",
-          "weight_raw": 0.4892,
-          "weight_norm": 0.2297
-        },
-        {
-          "name": "PSO",
-          "weight_raw": 0.3277,
-          "weight_norm": 0.1539
-        }
-      ],
-      "index": 7,
-      "fitness": -136.9,
-      "usage": 400
-    },
-    {
-      "dr": {
-        "name": "EDD",
-        "weight": 1.0
-      },
-      "mh_genes": [
-        {
-          "name": "GA",
-          "weight_raw": 0.4211,
-          "weight_norm": 0.2194
-        },
-        {
-          "name": "PSO",
-          "weight_raw": 0.3245,
-          "weight_norm": 0.1691
-        },
-        {
-          "name": "GA",
-          "weight_raw": 1.1738,
-          "weight_norm": 0.6115
-        }
-      ],
-      "index": 0,
-      "fitness": -1000000000.0,
-      "usage": 0
-    },
-    {
-      "dr": {
         "name": "SPT",
         "weight": 1.0
       },
       "mh_genes": [
         {
-          "name": "EDD",
-          "weight_raw": 0.4083,
-          "weight_norm": 0.1195
-        },
-        {
-          "name": "GA",
-          "weight_raw": 1.4257,
-          "weight_norm": 0.4172
-        },
-        {
           "name": "SA",
-          "weight_raw": 1.5829,
-          "weight_norm": 0.4633
-        }
-      ],
-      "index": 2,
-      "fitness": -1000000000.0,
-      "usage": 0
-    },
-    {
-      "dr": {
-        "name": "EDD",
-        "weight": 1.0
-      },
-      "mh_genes": [
+          "weight_raw": 0.1647,
+          "weight_norm": 0.0886
+        },
         {
           "name": "EDD",
-          "weight_raw": 1.0287,
-          "weight_norm": 0.3296
+          "weight_raw": 0.9558,
+          "weight_norm": 0.5144
         },
         {
-          "name": "PSO",
-          "weight_raw": 0.513,
-          "weight_norm": 0.1643
-        },
-        {
-          "name": "GA",
-          "weight_raw": 1.5797,
-          "weight_norm": 0.5061
+          "name": "SA",
+          "weight_raw": 0.7376,
+          "weight_norm": 0.397
         }
       ],
-      "index": 1,
-      "fitness": -1000000000.0,
-      "usage": 0
+      "index": 62,
+      "fitness": -155.44,
+      "usage": 1000
     },
     {
       "dr": {
-        "name": "EDD",
+        "name": "FCFS",
         "weight": 1.0
       },
       "mh_genes": [
         {
-          "name": "GA",
-          "weight_raw": 1.0774,
-          "weight_norm": 0.3584
-        },
-        {
           "name": "PSO",
-          "weight_raw": 0.489,
-          "weight_norm": 0.1627
+          "weight_raw": 1.1518,
+          "weight_norm": 0.5301
         },
         {
           "name": "GA",
-          "weight_raw": 1.4401,
-          "weight_norm": 0.479
-        }
-      ],
-      "index": 3,
-      "fitness": -1000000000.0,
-      "usage": 0
-    },
-    {
-      "dr": {
-        "name": "LPT",
-        "weight": 1.0
-      },
-      "mh_genes": [
-        {
-          "name": "SA",
-          "weight_raw": 0.2298,
-          "weight_norm": 0.1293
+          "weight_raw": 0.8124,
+          "weight_norm": 0.3739
         },
         {
           "name": "SA",
-          "weight_raw": 0.6026,
-          "weight_norm": 0.339
-        },
-        {
-          "name": "PSO",
-          "weight_raw": 0.9452,
-          "weight_norm": 0.5317
+          "weight_raw": 0.2087,
+          "weight_norm": 0.0961
         }
       ],
-      "index": 4,
+      "index": 0,
       "fitness": -1000000000.0,
       "usage": 0
     },
@@ -164,19 +60,97 @@
       },
       "mh_genes": [
         {
-          "name": "PSO",
-          "weight_raw": 0.1,
-          "weight_norm": 0.0578
+          "name": "SA",
+          "weight_raw": 0.8857,
+          "weight_norm": 0.3504
+        },
+        {
+          "name": "EDD",
+          "weight_raw": 0.4086,
+          "weight_norm": 0.1617
         },
         {
           "name": "PSO",
-          "weight_raw": 0.5262,
-          "weight_norm": 0.3043
+          "weight_raw": 1.2332,
+          "weight_norm": 0.4879
+        }
+      ],
+      "index": 2,
+      "fitness": -1000000000.0,
+      "usage": 0
+    },
+    {
+      "dr": {
+        "name": "FCFS",
+        "weight": 1.0
+      },
+      "mh_genes": [
+        {
+          "name": "EDD",
+          "weight_raw": 1.3599,
+          "weight_norm": 0.454
         },
         {
           "name": "GA",
-          "weight_raw": 1.1033,
-          "weight_norm": 0.6379
+          "weight_raw": 1.0616,
+          "weight_norm": 0.3544
+        },
+        {
+          "name": "PSO",
+          "weight_raw": 0.5738,
+          "weight_norm": 0.1916
+        }
+      ],
+      "index": 1,
+      "fitness": -1000000000.0,
+      "usage": 0
+    },
+    {
+      "dr": {
+        "name": "CR",
+        "weight": 1.0
+      },
+      "mh_genes": [
+        {
+          "name": "EDD",
+          "weight_raw": 1.0844,
+          "weight_norm": 0.4892
+        },
+        {
+          "name": "GA",
+          "weight_raw": 0.9533,
+          "weight_norm": 0.4301
+        },
+        {
+          "name": "SA",
+          "weight_raw": 0.179,
+          "weight_norm": 0.0807
+        }
+      ],
+      "index": 4,
+      "fitness": -1000000000.0,
+      "usage": 0
+    },
+    {
+      "dr": {
+        "name": "EDD",
+        "weight": 1.0
+      },
+      "mh_genes": [
+        {
+          "name": "EDD",
+          "weight_raw": 0.8507,
+          "weight_norm": 0.3663
+        },
+        {
+          "name": "EDD",
+          "weight_raw": 0.2103,
+          "weight_norm": 0.0906
+        },
+        {
+          "name": "PSO",
+          "weight_raw": 1.2612,
+          "weight_norm": 0.5431
         }
       ],
       "index": 5,
@@ -206,6 +180,32 @@
         }
       ],
       "index": 6,
+      "fitness": -1000000000.0,
+      "usage": 0
+    },
+    {
+      "dr": {
+        "name": "FCFS",
+        "weight": 1.0
+      },
+      "mh_genes": [
+        {
+          "name": "PSO",
+          "weight_raw": 1.5384,
+          "weight_norm": 0.3799
+        },
+        {
+          "name": "PSO",
+          "weight_raw": 1.8528,
+          "weight_norm": 0.4575
+        },
+        {
+          "name": "PSO",
+          "weight_raw": 0.6586,
+          "weight_norm": 0.1626
+        }
+      ],
+      "index": 3,
       "fitness": -1000000000.0,
       "usage": 0
     },
@@ -367,24 +367,24 @@
     },
     {
       "dr": {
-        "name": "LPT",
+        "name": "CR",
         "weight": 1.0
       },
       "mh_genes": [
         {
           "name": "GA",
-          "weight_raw": 0.1,
-          "weight_norm": 0.0521
+          "weight_raw": 1.2803,
+          "weight_norm": 0.5333
         },
         {
           "name": "EDD",
-          "weight_raw": 1.6408,
-          "weight_norm": 0.8552
+          "weight_raw": 1.0203,
+          "weight_norm": 0.425
         },
         {
-          "name": "SA",
-          "weight_raw": 0.1779,
-          "weight_norm": 0.0927
+          "name": "GA",
+          "weight_raw": 0.1,
+          "weight_norm": 0.0417
         }
       ],
       "index": 14,
@@ -399,21 +399,21 @@
       "mh_genes": [
         {
           "name": "GA",
-          "weight_raw": 1.7459,
-          "weight_norm": 0.5141
+          "weight_raw": 1.3131,
+          "weight_norm": 0.6165
         },
         {
           "name": "EDD",
-          "weight_raw": 0.8545,
-          "weight_norm": 0.2516
+          "weight_raw": 0.4892,
+          "weight_norm": 0.2297
         },
         {
           "name": "PSO",
-          "weight_raw": 0.7959,
-          "weight_norm": 0.2343
+          "weight_raw": 0.3277,
+          "weight_norm": 0.1539
         }
       ],
-      "index": 15,
+      "index": 7,
       "fitness": -1000000000.0,
       "usage": 0
     }
@@ -421,24 +421,50 @@
   "loser_portfolios": [
     {
       "dr": {
-        "name": "EDD",
+        "name": "CR",
         "weight": 1.0
       },
       "mh_genes": [
         {
           "name": "GA",
-          "weight_raw": 1.4877,
-          "weight_norm": 0.6454
-        },
-        {
-          "name": "EDD",
-          "weight_raw": 0.7173,
-          "weight_norm": 0.3112
+          "weight_raw": 1.0571,
+          "weight_norm": 0.4103
         },
         {
           "name": "PSO",
-          "weight_raw": 0.1,
-          "weight_norm": 0.0434
+          "weight_raw": 1.2432,
+          "weight_norm": 0.4825
+        },
+        {
+          "name": "GA",
+          "weight_raw": 0.2762,
+          "weight_norm": 0.1072
+        }
+      ],
+      "index": 15,
+      "fitness": -1000000000.0,
+      "usage": 0
+    },
+    {
+      "dr": {
+        "name": "CR",
+        "weight": 1.0
+      },
+      "mh_genes": [
+        {
+          "name": "GA",
+          "weight_raw": 1.0235,
+          "weight_norm": 0.5058
+        },
+        {
+          "name": "EDD",
+          "weight_raw": 0.4477,
+          "weight_norm": 0.2212
+        },
+        {
+          "name": "GA",
+          "weight_raw": 0.5524,
+          "weight_norm": 0.273
         }
       ],
       "index": 16,
@@ -453,47 +479,21 @@
       "mh_genes": [
         {
           "name": "GA",
-          "weight_raw": 1.2644,
-          "weight_norm": 0.5054
-        },
-        {
-          "name": "PSO",
-          "weight_raw": 0.9402,
-          "weight_norm": 0.3758
-        },
-        {
-          "name": "PSO",
-          "weight_raw": 0.2974,
-          "weight_norm": 0.1188
-        }
-      ],
-      "index": 17,
-      "fitness": -1000000000.0,
-      "usage": 0
-    },
-    {
-      "dr": {
-        "name": "EDD",
-        "weight": 1.0
-      },
-      "mh_genes": [
-        {
-          "name": "GA",
-          "weight_raw": 1.2309,
-          "weight_norm": 0.6384
+          "weight_raw": 0.8846,
+          "weight_norm": 0.4065
         },
         {
           "name": "EDD",
-          "weight_raw": 0.1447,
-          "weight_norm": 0.0751
+          "weight_raw": 1.1013,
+          "weight_norm": 0.5061
         },
         {
-          "name": "PSO",
-          "weight_raw": 0.5524,
-          "weight_norm": 0.2865
+          "name": "GA",
+          "weight_raw": 0.1902,
+          "weight_norm": 0.0874
         }
       ],
-      "index": 18,
+      "index": 17,
       "fitness": -1000000000.0,
       "usage": 0
     },
@@ -504,22 +504,22 @@
       },
       "mh_genes": [
         {
-          "name": "GA",
-          "weight_raw": 1.092,
-          "weight_norm": 0.5196
-        },
-        {
           "name": "EDD",
-          "weight_raw": 0.7983,
-          "weight_norm": 0.3798
+          "weight_raw": 0.5624,
+          "weight_norm": 0.2105
         },
         {
-          "name": "PSO",
-          "weight_raw": 0.2113,
-          "weight_norm": 0.1006
+          "name": "SA",
+          "weight_raw": 1.2308,
+          "weight_norm": 0.4607
+        },
+        {
+          "name": "SA",
+          "weight_raw": 0.8782,
+          "weight_norm": 0.3287
         }
       ],
-      "index": 19,
+      "index": 18,
       "fitness": -1000000000.0,
       "usage": 0
     }
@@ -527,86 +527,86 @@
   "new_portfolios": [
     {
       "dr": {
-        "name": "EDD",
+        "name": "SPT",
+        "weight": 1.0
+      },
+      "mh_genes": [
+        {
+          "name": "GA",
+          "weight_raw": 0.2561,
+          "weight_norm": 0.2972
+        },
+        {
+          "name": "EDD",
+          "weight_raw": 0.4029,
+          "weight_norm": 0.4675
+        },
+        {
+          "name": "SA",
+          "weight_raw": 0.2027,
+          "weight_norm": 0.2353
+        }
+      ],
+      "index": 15,
+      "parents": [
+        62,
+        62
+      ]
+    },
+    {
+      "dr": {
+        "name": "SPT",
         "weight": 1.0
       },
       "mh_genes": [
         {
           "name": "SA",
-          "weight_raw": 1.4045,
-          "weight_norm": 0.8753
+          "weight_raw": 0.2847,
+          "weight_norm": 0.1702
         },
         {
           "name": "EDD",
-          "weight_raw": 0.1,
-          "weight_norm": 0.0623
+          "weight_raw": 0.9301,
+          "weight_norm": 0.5558
         },
         {
           "name": "PSO",
-          "weight_raw": 0.1,
-          "weight_norm": 0.0623
+          "weight_raw": 0.4586,
+          "weight_norm": 0.2741
         }
       ],
       "index": 16,
       "parents": [
-        7,
-        7
+        62,
+        62
       ]
     },
     {
       "dr": {
-        "name": "EDD",
+        "name": "SPT",
         "weight": 1.0
       },
       "mh_genes": [
         {
-          "name": "GA",
-          "weight_raw": 1.4331,
-          "weight_norm": 0.7178
+          "name": "SA",
+          "weight_raw": 0.1,
+          "weight_norm": 0.0473
         },
         {
           "name": "EDD",
-          "weight_raw": 0.4635,
-          "weight_norm": 0.2321
+          "weight_raw": 1.2371,
+          "weight_norm": 0.5855
         },
         {
-          "name": "GA",
-          "weight_raw": 0.1,
-          "weight_norm": 0.0501
+          "name": "EDD",
+          "weight_raw": 0.7756,
+          "weight_norm": 0.3671
         }
       ],
       "index": 17,
       "parents": [
-        7,
-        7
-      ]
-    },
-    {
-      "dr": {
-        "name": "EDD",
-        "weight": 1.0
-      },
-      "mh_genes": [
-        {
-          "name": "GA",
-          "weight_raw": 1.1767,
-          "weight_norm": 0.5088
-        },
-        {
-          "name": "EDD",
-          "weight_raw": 0.7705,
-          "weight_norm": 0.3331
-        },
-        {
-          "name": "EDD",
-          "weight_raw": 0.3657,
-          "weight_norm": 0.1581
-        }
-      ],
-      "index": 18,
-      "parents": [
-        7,
-        7
+        62,
+        62
       ]
     },
     {
@@ -616,25 +616,25 @@
       },
       "mh_genes": [
         {
-          "name": "GA",
-          "weight_raw": 1.3481,
-          "weight_norm": 0.6002
+          "name": "SA",
+          "weight_raw": 0.1997,
+          "weight_norm": 0.1011
         },
         {
           "name": "EDD",
-          "weight_raw": 0.7196,
-          "weight_norm": 0.3204
+          "weight_raw": 1.1862,
+          "weight_norm": 0.6008
         },
         {
-          "name": "PSO",
-          "weight_raw": 0.1785,
-          "weight_norm": 0.0795
+          "name": "SA",
+          "weight_raw": 0.5884,
+          "weight_norm": 0.298
         }
       ],
-      "index": 19,
+      "index": 18,
       "parents": [
-        7,
-        7
+        62,
+        62
       ]
     }
   ]

@@ -17,6 +17,10 @@ import metaheuristics_impl        # auto-register MH vào MH_REGISTRY
 from lgp_actions import ActionIndividual, ActionLGP, Gene, individual_normalized_weights
 from typed_action_adapter import run_action_individual
 from coevolution_trainer import CoevolutionConfig, train_with_coevolution
+# LGP imports
+from lgp_generator import LGPGenerator
+from lgp_program import LGPProgram
+from lgp_coevolution import train_with_coevolution_lgp
 
 
 # ==================== Helper for Action Name Display ====================
@@ -896,7 +900,22 @@ if __name__ == "__main__":
     clip_epsilon = PPOConfig.clip_epsilon
     entropy_coef = PPOConfig.entropy_coef
 
-    # 1) Khởi tạo 64 action từ LGP
+    # 1) Khởi tạo LGP programs ngẫu nhiên
+    import random as _random
+    lgp_rng = _random.Random(RANDOM_SEED)
+    lgp_gen = LGPGenerator(
+        max_length=LGPConfig.max_program_length,
+        min_length=LGPConfig.min_program_length,
+        num_registers=LGPConfig.num_registers,
+        rng=lgp_rng,
+    )
+    lgp_programs = [
+        lgp_gen.generate_random_program()
+        for _ in range(LGPConfig.pool_size)
+    ]
+    
+    # 2) Khởi tạo action_library ban đầu (placeholder) cho env
+    # LGP sẽ overwrite trong training
     action_library = initialize_lgp_action_library(
         pool_size=LGPConfig.pool_size,
         dr_list=LGPConfig.available_dr,
@@ -904,7 +923,7 @@ if __name__ == "__main__":
         seed=RANDOM_SEED
     )
 
-    # 2) Tạo env (cho 1 dataset hiện tại)
+    # 3) Tạo env (cho 1 dataset hiện tại)
     env = DynamicSchedulingEnv(
         lambda_tardiness=EnvironmentConfig.lambda_tardiness,
         action_library=action_library,
@@ -913,11 +932,11 @@ if __name__ == "__main__":
     obs_dim = env.observation_space.shape[0]
     act_dim = env.action_space.n
 
-    # 3) PPO model + optimizer
+    # 4) PPO model + optimizer
     model = PPOActorCritic(obs_dim, act_dim)
     optimizer = optim.Adam(model.parameters(), lr=lr)
 
-    # 4) Cấu hình coevolution from config
+    # 5) Cấu hình coevolution from config
     from coevolution_trainer import CoevolutionConfig as CoevoCfg
     cfg = CoevoCfg(
         num_generations=CoevolutionConfig.num_generations,
@@ -935,13 +954,17 @@ if __name__ == "__main__":
         mh_name_mutation_prob=CoevolutionConfig.mh_name_mutation_prob
     )
 
-    # 5) Train với coevolution (PPO + LGP)
+    # 6) Train với LGP coevolution (PPO + LGP)
     import os
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    train_with_coevolution(
+    print("\n" + "="*70)
+    print("🚀 STARTING LGP + PPO COEVOLUTION TRAINING")
+    print("="*70)
+    
+    lgp_programs, final_action_library = train_with_coevolution_lgp(
         env=env,
-        action_library=action_library,
+        lgp_programs=lgp_programs,
         model=model,
         optimizer=optimizer,
         select_action_fn=select_action,
@@ -950,11 +973,23 @@ if __name__ == "__main__":
         output_dir=OUTPUT_DIR
     )
 
-    # 6) Lưu model sau khi train
+    # 7) Lưu model sau khi train
     torch.save(model.state_dict(), MODEL_SAVE_PATH)
     print(f"\n=== Training Complete ===")
     print(f"Model saved to: {MODEL_SAVE_PATH}")
     print(f"Results saved to: {OUTPUT_DIR}/")
+    
+    # Save LGP programs
+    programs_data = {
+        "num_programs": len(lgp_programs),
+        "programs": [prog.to_dict() for prog in lgp_programs]
+    }
+    lgp_save_path = os.path.join(OUTPUT_DIR, "lgp_programs_final.json")
+    import json
+    with open(lgp_save_path, 'w') as f:
+        json.dump(programs_data, f, indent=2)
+    print(f"LGP programs saved to: {lgp_save_path}")
+
 
 
 

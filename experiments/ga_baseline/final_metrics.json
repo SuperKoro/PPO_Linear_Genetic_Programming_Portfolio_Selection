@@ -1,0 +1,26 @@
+{
+  "makespan_avg": 136.5126,
+  "makespan_std": 36.9242,
+  "makespan_min": 81.93,
+  "total_tardiness_avg": 0.0,
+  "policy_loss_avg": 1.3618,
+  "value_loss_avg": 2380.0926,
+  "return_avg": -251.9863,
+  "return_max": null,
+  "makespans_per_generation": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "avg_rewards_per_generation": null,
+  "best_rewards_per_generation": null,
+  "training_time_seconds": 44.65550088882446,
+  "method": "GA"
+}

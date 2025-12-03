@@ -1,0 +1,10 @@
+{
+  "method": "GA",
+  "timestamp": "2025-12-03T10:11:06.169336",
+  "num_generations": 10,
+  "episodes_per_gen": 100,
+  "pool_size": 64,
+  "elite_size": 16,
+  "n_replace": 4,
+  "random_seed": 777
+}

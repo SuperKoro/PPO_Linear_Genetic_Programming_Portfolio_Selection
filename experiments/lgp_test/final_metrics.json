@@ -1,0 +1,45 @@
+{
+  "makespan_avg": 164.5873,
+  "makespan_std": 42.1089,
+  "makespan_min": 99.21,
+  "total_tardiness_avg": 0.0875,
+  "policy_loss_avg": 0.0,
+  "value_loss_avg": 3242.7452,
+  "return_avg": -305.0588,
+  "return_max": null,
+  "makespans_per_generation": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "avg_rewards_per_generation": null,
+  "best_rewards_per_generation": null,
+  "best_portfolio": {
+    "dr": "EDD",
+    "mh_genes": [
+      {
+        "name": "SA",
+        "weight": 0.0
+      },
+      {
+        "name": "SA",
+        "weight": 0.0
+      },
+      {
+        "name": "GA",
+        "weight": 1.0
+      }
+    ],
+    "fitness": -152.53,
+    "usage": 200
+  },
+  "training_time_seconds": 24.584858417510986,
+  "method": "LGP"
+}

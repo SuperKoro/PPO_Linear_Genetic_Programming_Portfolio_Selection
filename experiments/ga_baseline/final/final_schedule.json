@@ -1,0 +1,363 @@
+{
+  "generation": 10,
+  "metrics": {
+    "makespan": 211.1,
+    "tardiness_normal": 0.0,
+    "tardiness_urgent": 0.0,
+    "total_tardiness": 0.0
+  },
+  "schedule_events": [
+    {
+      "job": "1",
+      "op_index": 0,
+      "machine": 1,
+      "start": 0.0,
+      "finish": 12.0,
+      "op_id": 1
+    },
+    {
+      "job": "10",
+      "op_index": 0,
+      "machine": 3,
+      "start": 10.0,
+      "finish": 17.0,
+      "op_id": 1
+    },
+    {
+      "job": "11",
+      "op_index": 0,
+      "machine": 4,
+      "start": 15.0,
+      "finish": 22.0,
+      "op_id": 1
+    },
+    {
+      "job": "12",
+      "op_index": 0,
+      "machine": 1,
+      "start": 12.0,
+      "finish": 24.0,
+      "op_id": 1
+    },
+    {
+      "job": "13",
+      "op_index": 0,
+      "machine": 2,
+      "start": 12.0,
+      "finish": 24.0,
+      "op_id": 1
+    },
+    {
+      "job": "14",
+      "op_index": 0,
+      "machine": 3,
+      "start": 17.0,
+      "finish": 18.0,
+      "op_id": 1
+    },
+    {
+      "job": "14",
+      "op_index": 1,
+      "machine": 6,
+      "start": 49.0,
+      "finish": 57.0,
+      "op_id": 2
+    },
+    {
+      "job": "14",
+      "op_index": 2,
+      "machine": 6,
+      "start": 57.0,
+      "finish": 65.0,
+      "op_id": 3
+    },
+    {
+      "job": "15",
+      "op_index": 0,
+      "machine": 3,
+      "start": 18.0,
+      "finish": 19.0,
+      "op_id": 1
+    },
+    {
+      "job": "15",
+      "op_index": 1,
+      "machine": 7,
+      "start": 19.0,
+      "finish": 62.0,
+      "op_id": 2
+    },
+    {
+      "job": "15",
+      "op_index": 2,
+      "machine": 5,
+      "start": 62.0,
+      "finish": 79.0,
+      "op_id": 3
+    },
+    {
+      "job": "15",
+      "op_index": 2,
+      "machine": 5,
+      "start": 79.0,
+      "finish": 83.0,
+      "op_id": 3
+    },
+    {
+      "job": "16",
+      "op_index": 0,
+      "machine": 1,
+      "start": 24.0,
+      "finish": 36.0,
+      "op_id": 1
+    },
+    {
+      "job": "16",
+      "op_index": 1,
+      "machine": 8,
+      "start": 36.0,
+      "finish": 44.0,
+      "op_id": 2
+    },
+    {
+      "job": "17",
+      "op_index": 0,
+      "machine": 2,
+      "start": 24.0,
+      "finish": 36.0,
+      "op_id": 1
+    },
+    {
+      "job": "17",
+      "op_index": 1,
+      "machine": 8,
+      "start": 44.0,
+      "finish": 56.0,
+      "op_id": 2
+    },
+    {
+      "job": "18",
+      "op_index": 0,
+      "machine": 1,
+      "start": 36.0,
+      "finish": 48.0,
+      "op_id": 1
+    },
+    {
+      "job": "18",
+      "op_index": 1,
+      "machine": 8,
+      "start": 56.0,
+      "finish": 60.0,
+      "op_id": 2
+    },
+    {
+      "job": "19",
+      "op_index": 0,
+      "machine": 8,
+      "start": 60.0,
+      "finish": 63.0,
+      "op_id": 1
+    },
+    {
+      "job": "2",
+      "op_index": 0,
+      "machine": 2,
+      "start": 0.0,
+      "finish": 12.0,
+      "op_id": 1
+    },
+    {
+      "job": "20",
+      "op_index": 0,
+      "machine": 2,
+      "start": 36.0,
+      "finish": 48.0,
+      "op_id": 1
+    },
+    {
+      "job": "20",
+      "op_index": 1,
+      "machine": 12,
+      "start": 48.0,
+      "finish": 73.0,
+      "op_id": 2
+    },
+    {
+      "job": "3",
+      "op_index": 0,
+      "machine": 3,
+      "start": 0.0,
+      "finish": 1.0,
+      "op_id": 1
+    },
+    {
+      "job": "3",
+      "op_index": 1,
+      "machine": 6,
+      "start": 1.0,
+      "finish": 9.0,
+      "op_id": 2
+    },
+    {
+      "job": "3",
+      "op_index": 2,
+      "machine": 6,
+      "start": 9.0,
+      "finish": 17.0,
+      "op_id": 3
+    },
+    {
+      "job": "4",
+      "op_index": 0,
+      "machine": 4,
+      "start": 0.0,
+      "finish": 7.0,
+      "op_id": 1
+    },
+    {
+      "job": "5",
+      "op_index": 0,
+      "machine": 3,
+      "start": 1.0,
+      "finish": 2.0,
+      "op_id": 1
+    },
+    {
+      "job": "6",
+      "op_index": 0,
+      "machine": 3,
+      "start": 2.0,
+      "finish": 3.0,
+      "op_id": 1
+    },
+    {
+      "job": "6",
+      "op_index": 1,
+      "machine": 6,
+      "start": 17.0,
+      "finish": 25.0,
+      "op_id": 2
+    },
+    {
+      "job": "6",
+      "op_index": 2,
+      "machine": 6,
+      "start": 25.0,
+      "finish": 33.0,
+      "op_id": 3
+    },
+    {
+      "job": "7",
+      "op_index": 0,
+      "machine": 3,
+      "start": 3.0,
+      "finish": 10.0,
+      "op_id": 1
+    },
+    {
+      "job": "8",
+      "op_index": 0,
+      "machine": 4,
+      "start": 7.0,
+      "finish": 8.0,
+      "op_id": 1
+    },
+    {
+      "job": "8",
+      "op_index": 1,
+      "machine": 6,
+      "start": 33.0,
+      "finish": 41.0,
+      "op_id": 2
+    },
+    {
+      "job": "8",
+      "op_index": 2,
+      "machine": 6,
+      "start": 41.0,
+      "finish": 49.0,
+      "op_id": 3
+    },
+    {
+      "job": "9",
+      "op_index": 0,
+      "machine": 4,
+      "start": 8.0,
+      "finish": 15.0,
+      "op_id": 1
+    },
+    {
+      "job": "D1",
+      "op_index": 0,
+      "machine": 1,
+      "start": 79.0,
+      "finish": 83.0,
+      "op_id": 1
+    },
+    {
+      "job": "D1",
+      "op_index": 0,
+      "machine": 1,
+      "start": 83.0,
+      "finish": 112.16,
+      "op_id": 1
+    },
+    {
+      "job": "D1",
+      "op_index": 1,
+      "machine": 4,
+      "start": 116.12,
+      "finish": 163.04,
+      "op_id": 2
+    },
+    {
+      "job": "D2",
+      "op_index": 0,
+      "machine": 6,
+      "start": 83.0,
+      "finish": 97.6,
+      "op_id": 1
+    },
+    {
+      "job": "D2",
+      "op_index": 1,
+      "machine": 15,
+      "start": 97.77,
+      "finish": 110.38,
+      "op_id": 2
+    },
+    {
+      "job": "D2",
+      "op_index": 2,
+      "machine": 8,
+      "start": 119.53,
+      "finish": 163.08,
+      "op_id": 3
+    },
+    {
+      "job": "D2",
+      "op_index": 3,
+      "machine": 3,
+      "start": 176.05,
+      "finish": 193.7,
+      "op_id": 4
+    },
+    {
+      "job": "D2",
+      "op_index": 4,
+      "machine": 7,
+      "start": 188.01,
+      "finish": 211.1,
+      "op_id": 5
+    },
+    {
+      "job": "15",
+      "op_index": 2,
+      "machine": 5,
+      "start": 83.0,
+      "finish": 104.37,
+      "op_id": 3
+    }
+  ]
+}
