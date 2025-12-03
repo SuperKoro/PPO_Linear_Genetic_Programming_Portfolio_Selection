@@ -11,7 +11,7 @@ from config import LGPConfig
 from lgp_program import LGPProgram
 from lgp_generator import LGPGenerator
 from lgp_evolution import linear_crossover, mutate_program
-from lgp_actions import ActionIndividual, describe_individual
+from ga_portfolio import ActionIndividual, describe_individual
 from coevolution_trainer import (
     CoevolutionConfig,
     _select_elite_indices,
@@ -69,7 +69,7 @@ def make_fallback_individual() -> ActionIndividual:
     Portfolio fallback nếu LGPProgram bị lỗi runtime.
     EDD + 1 SA, các MH còn lại weight 0.
     """
-    from lgp_actions import Gene
+    from ga_portfolio import Gene
     genes = [
         Gene(kind="DR", name=LGPConfig.available_dr[0], w_raw=1.0),
         Gene(kind="MH", name=LGPConfig.available_mh[0], w_raw=1.0),

@@ -2,7 +2,7 @@
 from __future__ import annotations
 from typing import Any, Dict, List
 
-from lgp_actions import ActionIndividual, Gene
+from ga_portfolio import ActionIndividual, Gene
 from dispatching_registry import has_dr, get_dr
 from mh_registry import has_mh, get_mh
 

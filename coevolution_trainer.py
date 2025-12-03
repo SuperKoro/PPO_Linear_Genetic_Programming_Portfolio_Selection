@@ -9,7 +9,7 @@ import json
 import os
 from pathlib import Path
 
-from lgp_actions import ActionIndividual, describe_individual
+from ga_portfolio import ActionIndividual, describe_individual
 from dispatching_registry import DR_REGISTRY
 from mh_registry import MH_REGISTRY
 
@@ -43,7 +43,7 @@ def portfolio_to_dict(individual: ActionIndividual, index: int = None,
                      fitness: float = None, usage: int = None) -> Dict[str, Any]:
     """Convert ActionIndividual to dictionary format with normalized weights"""
     # Import here to avoid circular dependency
-    from lgp_actions import individual_normalized_weights
+    from ga_portfolio import individual_normalized_weights
     
     norm_ws = individual_normalized_weights(individual)
     
@@ -265,7 +265,7 @@ def _sample_parent_indices(fitness: np.ndarray,
 
 
 def _clone_individual(ind: ActionIndividual) -> ActionIndividual:
-    from lgp_actions import Gene
+    from ga_portfolio import Gene
     new_genes = [Gene(g.kind, g.name, g.w_raw) for g in ind.genes]
     return ActionIndividual(genes=new_genes)
 

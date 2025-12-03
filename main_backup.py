@@ -13,7 +13,7 @@ from matplotlib.patches import Patch
 # LGP System Imports
 import dispatching_rules  # auto-register DR
 import metaheuristics_impl  # auto-register MH
-from lgp_actions import ActionIndividual, ActionLGP, Gene
+from ga_portfolio import ActionIndividual, ActionLGP, Gene
 from typed_action_adapter import run_action_individual
 
 machine_pool = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15]

@@ -14,7 +14,7 @@ from matplotlib.patches import Patch
 import dispatching_rules          # auto-register DR vào DR_REGISTRY
 import metaheuristics_impl        # auto-register MH vào MH_REGISTRY
 
-from lgp_actions import ActionIndividual, ActionLGP, Gene, individual_normalized_weights
+from ga_portfolio import ActionIndividual, ActionLGP, Gene, individual_normalized_weights
 from typed_action_adapter import run_action_individual
 from coevolution_trainer import CoevolutionConfig, train_with_coevolution
 # LGP imports

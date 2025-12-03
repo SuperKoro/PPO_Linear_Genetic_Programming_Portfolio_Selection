@@ -2,7 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List, Dict, Any, Optional
 
-from lgp_actions import ActionIndividual, Gene
+from ga_portfolio import ActionIndividual, Gene
 from config import LGPConfig
 from lgp_instructions import (
     Instruction,
